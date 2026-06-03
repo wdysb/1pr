@@ -21,16 +21,16 @@ class Result
         HashSet<int> socks = new HashSet<int>();
         int pairs = 0;
 
-        foreach (int sock in ar)
+        for (int i = 0; i < ar.Count; i++)
         {
-            if (socks.Contains(sock))
+            if (socks.Contains(ar[i]))
             {
-                socks.Remove(sock);
+                socks.Remove(ar[i]);
                 pairs++;
             }
             else
             {
-                socks.Add(sock);
+                socks.Add(ar[i]);
             }
         }
 
@@ -43,7 +43,8 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+        string outputPath = Environment.GetEnvironmentVariable("OUTPUT_PATH") ?? "output.txt";
+        TextWriter textWriter = new StreamWriter(outputPath, true);
 
         int n = Convert.ToInt32(Console.ReadLine().Trim());
 
@@ -57,4 +58,3 @@ class Solution
         textWriter.Close();
     }
 }
-
